@@ -13,7 +13,7 @@ class ChefController extends Controller
        {
            $data = Chef::all();
            $datachef = Chef::all();
-           return view('Admin.Chef.ShowChef',compact('data','datachef '));
+           return view('Admin.Chef.ShowChef',compact('data','datachef'));
        }
    
         //Delete Chef
@@ -45,9 +45,12 @@ $data->image =$imagename;
 $data->name=$request->name;
 $data->speciality =$request->speciality;
 $data->save();
+//Session::flash('flash_message', '<b>Well done!</b> You successfully logged in to this website.');
+//Session::flash('flash_type', 'alert-success');
 return redirect()->back();
 
       }
+
 
        //EditChef
    

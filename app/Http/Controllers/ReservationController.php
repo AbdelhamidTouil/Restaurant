@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ReservationController;
 use App\Models\Reservation;
 
+
 class ReservationController extends Controller
 {
       //Show Reservation
@@ -35,7 +36,7 @@ class ReservationController extends Controller
  
  $data->name=$request->name;
  $data->phone = $request->phone;
- $data->email =$request->email;
+ $data->addresse =$request->addresse;
 
  $data->guest=$request->guest;
  $data->date = $request->date;
@@ -45,6 +46,14 @@ class ReservationController extends Controller
  return redirect()->back();
  
        }
+          //Search Reservation
+     public function SearchReservation(Request $request)
+     {
+        $search = $request->search;
+        $data = Reservation::where('name','like','%'.$search.'%')->get();
+
+       return view('Admin.Reservation.ShowReservation',compact('data'));
+     }
 
       
       
